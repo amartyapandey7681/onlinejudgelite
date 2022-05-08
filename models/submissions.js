@@ -1,12 +1,11 @@
 const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
 
-const questionSchema = new Schema({
+const submission = new Schema({
     _id                 :{ type: String },
-    Question_paragraph : String,
-    Test_case_input    : Array ,
-    Correct_output     : Array ,
-    Points_for_correct : String
+    question_id         : String,
+    User_Id             : String,
+    Accepted            : Boolean
 
 }, {
     timestamps: {
@@ -16,4 +15,4 @@ const questionSchema = new Schema({
     versionKey: false
 })
 
-module.exports = mongoose.model('Questions',questionSchema,'Questions');
+module.exports = mongoose.model('submissions',submission,'submissions');

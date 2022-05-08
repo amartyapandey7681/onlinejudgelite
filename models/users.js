@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
 
-const questionSchema = new Schema({
+const user = new Schema({
     _id                 :{ type: String },
-    Question_paragraph : String,
-    Test_case_input    : Array ,
-    Correct_output     : Array ,
-    Points_for_correct : String
+    Name                : String,
+    Email               : String,
+    Date_of_joining     : Date,
+    Correct_soln        : Array
 
 }, {
     timestamps: {
@@ -16,4 +16,4 @@ const questionSchema = new Schema({
     versionKey: false
 })
 
-module.exports = mongoose.model('Questions',questionSchema,'Questions');
+module.exports = mongoose.model('user',user,'user');
