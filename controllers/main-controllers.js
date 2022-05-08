@@ -110,6 +110,10 @@ exports.submitSolution = async (req,res) => {
     } catch(e) {
         console.log('error>>>', e);
     }
+
+    // now i got file
+
+    //now compile file in docker container
 }
 
 
