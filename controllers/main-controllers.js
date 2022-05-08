@@ -81,19 +81,28 @@ exports.submitSolution = async (req,res) => {
     // now parse the code string to file and the execute 
     // make for cpp first
 
-    fs.appendFile('submission_'+question_id+'_'+user_id+'.'+sub_lang, '//Hello content!', function (err) {
+    let fileName = 'submission_'+question_id+'_'+user_id+'.'+sub_lang;
+
+    fs.appendFile(fileName, '//Hello content!', function (err) {
         if (err) throw err;
         console.log('Saved!');
       });
 
     try {  
         let codeConversion = sub_code;
+        let ini = 0 ;
+        let tempSub ;
 
         for(let x=0;x<codeConversion.length;x++){
 
+           
             if(codeConversion[x] == '\n'){
 
+                tempSub = codeConversion.substring(ini,x);
+                ini = x+1 ;
+    
 
+                fs.appendFileSync(fileName, tempSub);
             }
         }
         
