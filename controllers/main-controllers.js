@@ -3,6 +3,7 @@ const submission = require("../models/submissions");
 const users = require("../models/users");
 
 const fs = require('fs');
+const UUID = require('uuid');
 
 
 
@@ -37,13 +38,25 @@ exports.addQuestion = async (req,res) => {
     let Correct_output     = params.Question_paragraph ;
     let Points_for_correct = params.Points_for_correct ;
 
+    let obj = {
+            _id                 : UUID.v4(),
+            Question_paragraph : Question_paragraph,// seperated by \n
+            Test_case_input    : Test_case_input ,
+            Correct_output     : Correct_output ,
+            Points_for_correct : Points_for_correct
+
+
+    }
+
+    let data;
     try{
-      //  questionM.insertMany()
+      data = await  questionM.insertMany([obj]);
     }catch(err){
 
         return res.send(500).status({status:500,err:err});
     }
-
+    return res.status(200).send({status:200,upsertedData:data
+    })
 
 
     
