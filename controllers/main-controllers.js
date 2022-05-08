@@ -4,8 +4,6 @@ const users = require("../models/users");
 
 const fs = require('fs');
 const UUID = require('uuid');
-const { resourceLimits } = require("worker_threads");
-
 
 
 exports.testFunction = async (req,res) => {
