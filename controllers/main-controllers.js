@@ -64,8 +64,19 @@ exports.addQuestion = async (req,res) => {
 
 exports.getAllResults = async (req,res) => {
 
+    let data;
+    try{
+
+        data = await submission.find({});
+    }catch(err){
+        return res.status(200).send({"err":err,"status":500});
+    }
+
+    return res.send(200).send({"status":200,"data":data});
+
     
 }
+
 
 
 
