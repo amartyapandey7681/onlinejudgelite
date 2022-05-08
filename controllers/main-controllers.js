@@ -51,7 +51,7 @@ exports.addQuestion = async (req,res) => {
 
 exports.getAllResults = async (req,res) => {
 
-
+    
 }
 
 
