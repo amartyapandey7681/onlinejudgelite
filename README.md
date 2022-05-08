@@ -5,6 +5,7 @@ backend and frontend repo for it
 
 branches will be updated soon
 
-BE node branch : feature/oj-BE-1
+BE node branch : feature/oj-BE-2
+
 
 FE angular branch :
