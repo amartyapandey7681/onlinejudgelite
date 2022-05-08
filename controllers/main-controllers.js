@@ -23,3 +23,23 @@ exports.addQuestion = async (req,res) => {
 
     
 }
+
+exports.getAllResults = async (req,res) => {
+
+
+}
+
+
+
+exports.submitSolution = async (req,res) => {
+
+
+}
+
+
+exports.currentSubmitted = async (req,res) => {
+
+
+}
+
+
