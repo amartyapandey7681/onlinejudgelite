@@ -179,8 +179,46 @@ exports.containerizeCodeCompilation = async(fileName)=>{
 exports.currentSubmitted = async (req,res) => {
 
 
-    let params = req
+    let params = req.body;
 
+    let user_id = params.u_id;
+    let ques_id = params.q_id;
+
+    if(!(user_id && ques_id)){
+
+        return res.status(404).send({response:"some data missing"})
+    }
+
+    let data;
+    try{
+
+        data = await submission.aggregate([{
+            $match:{
+                
+                        question_id         : user_id,
+                        User_Id             : ques_id
+               
+            }
+        },{
+            $project:{
+                _id:0
+            }
+        }])
+
+
+
+
+    }catch(err){
+
+        return res.status(500).status({err:err,status:500});
+    }
+
+
+    return res.status(200).status({
+
+        status:200,
+        data: data
+    })
 }
 
 
