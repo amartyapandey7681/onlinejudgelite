@@ -4,6 +4,7 @@ const users = require("../models/users");
 
 const fs = require('fs');
 const UUID = require('uuid');
+const { resourceLimits } = require("worker_threads");
 
 
 
@@ -156,12 +157,32 @@ exports.submitSolution = async (req,res) => {
     // now i got file
 
     //now compile file in docker container
+
+    let finalResult = await this.containerizeCodeCompilation(fileName);
+
+     // make entries in respective collections >>async<<
+
+
+
 }
 
+exports.containerizeCodeCompilation = async(fileName)=>{
+
+    let result;
+
+
+
+
+    return result;
+} 
 
 exports.currentSubmitted = async (req,res) => {
 
 
+    let params = req
+
 }
 
 
+// design patterns not followed
+// >>> i follow SOLID principles
