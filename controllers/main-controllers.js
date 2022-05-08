@@ -69,8 +69,19 @@ exports.submitSolution = async (req,res) => {
 
     }
 
-    
+    let test_cases  = questionData[0].Test_case_input ;
+    let Correct_output  = questionData[0].Correct_output ; 
+    let Points_for_correct =  questionData[0].Points_for_correct;
 
+
+    let sub_lang = submission.lang;
+
+    let sub_code = submission.code;
+
+    // now parse the code string to file and the execute 
+    // make for cpp first
+
+    
 }
 
 
