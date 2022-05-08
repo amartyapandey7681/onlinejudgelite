@@ -17,6 +17,15 @@ exports.testFunction = async (req,res) => {
 
 exports.getAllQuestions = async (req,res) => {
 
+    let data;
+    try{
+
+        data = questionM.find({});
+    }catch(err){
+        return res.status(200).send({"err":err,"status":500});
+    }
+
+    return res.send(200).send({"status":200,"data":data});
 
 }
 
