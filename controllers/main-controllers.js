@@ -20,7 +20,7 @@ exports.getAllQuestions = async (req,res) => {
     let data;
     try{
 
-        data = questionM.find({});
+        data = await questionM.find({});
     }catch(err){
         return res.status(200).send({"err":err,"status":500});
     }
@@ -36,6 +36,15 @@ exports.addQuestion = async (req,res) => {
     let Test_case_input    = params.Question_paragraph ;
     let Correct_output     = params.Question_paragraph ;
     let Points_for_correct = params.Points_for_correct ;
+
+    try{
+      //  questionM.insertMany()
+    }catch(err){
+
+        return res.send(500).status({status:500,err:err});
+    }
+
+
 
     
 }
