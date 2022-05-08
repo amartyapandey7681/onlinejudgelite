@@ -222,3 +222,6 @@ exports.currentSubmitted = async (req,res) => {
 
 // design patterns not followed
 // >>> i follow SOLID principles
+
+
+// more small apis can be added while integrating with frontend
