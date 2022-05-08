@@ -2,7 +2,7 @@ const questionM = require("../models/questions");
 const submission = require("../models/submissions");
 const users = require("../models/users");
 
-
+const fs = require('fs');
 
 
 
@@ -81,7 +81,26 @@ exports.submitSolution = async (req,res) => {
     // now parse the code string to file and the execute 
     // make for cpp first
 
-    
+    fs.appendFile('submission_'+question_id+'_'+user_id+'.'+sub_lang, '//Hello content!', function (err) {
+        if (err) throw err;
+        console.log('Saved!');
+      });
+
+    try {  
+        let codeConversion = sub_code;
+
+        for(let x=0;x<codeConversion.length;x++){
+
+            if(codeConversion[x] == '\n'){
+
+
+            }
+        }
+        
+
+    } catch(e) {
+        console.log('error>>>', e);
+    }
 }
 
 
