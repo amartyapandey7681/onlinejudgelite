@@ -9,6 +9,6 @@ router.post("/addQuestions",mainControllers.addQuestion);
 router.post("/getAllResults",mainControllers.getAllResults);
 router.post("/submitSolution",mainControllers.submitSolution);
 router.post("/currentSubmitted",mainControllers.currentSubmitted);
-
+router.post("/addUser",mainControllers.addUser);
 
 module.exports = router;

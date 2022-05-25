@@ -77,7 +77,29 @@ exports.getAllResults = async (req,res) => {
     
 }
 
+exports.addUser = async(req,res)=>{
 
+    let obj = {
+        _id                 : UUID.v4(),
+        Name                : req.body.Name,
+        Email               : req.body.Email,
+        Date_of_joining     : new Date(),
+        Correct_soln        : []
+        }
+
+        let data;
+        try{
+        data = await  users.insertMany([obj]);
+        }catch(err){
+
+            return res.send(500).status({status:500,err:err});
+        }
+        return res.status(200).send({status:200,upsertedData:data
+        })
+
+
+
+}
 
 
 exports.submitSolution = async (req,res) => {
@@ -234,8 +256,3 @@ exports.currentSubmitted = async (req,res) => {
 }
 
 
-// design patterns not followed
-// >>> i follow SOLID principles
-
-
-// more small apis can be added while integrating with frontend
