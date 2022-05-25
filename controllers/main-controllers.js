@@ -147,13 +147,13 @@ exports.submitSolution = async (req,res) => {
 
     let fileName = 'submission_'+question_id+'_'+user_id+'.'+sub_lang;
 
-    fs.appendFile(fileName, '//Hello content!', function (err) {
+    fs.appendFile(fileName, '//Hello content!\n', function (err) {
         if (err) throw err;
         console.log('Saved!');
       });
 
     try {  
-        let codeConversion = sub_code;
+        let codeConversion = sub_code+"\n";
         let ini = 0 ;
         let tempSub ;
 
