@@ -179,11 +179,13 @@ exports.submitSolution = async (req,res) => {
 
     //now compile file in docker container
 
-    let finalResult = await this.containerizeCodeCompilation(fileName);
+  //  let finalResult = await this.containerizeCodeCompilation(fileName);
 
      // make entries in respective collections >>async<<
 
-
+    return res.status(200).send({
+        fileName:fileName
+    })
 
 }
 
