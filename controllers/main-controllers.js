@@ -23,10 +23,10 @@ exports.getAllQuestions = async (req,res) => {
 
         data = await questionM.find({});
     }catch(err){
-        return res.status(200).send({"err":err,"status":500});
+        return res.status(500).send({"err":err,"status":500});
     }
 
-    return res.send(200).send({"status":200,"data":data});
+    return res.status(200).send({"status":200,"data":data});
 
 }
 
