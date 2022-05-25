@@ -1,7 +1,8 @@
 const questionM = require("../models/questions");
 const submission = require("../models/submissions");
 const users = require("../models/users");
-
+const exec  = require("child_process").exec;
+const axios = require("axios");
 const fs = require('fs');
 const UUID = require('uuid');
 
@@ -169,8 +170,20 @@ exports.containerizeCodeCompilation = async(fileName)=>{
     let result;
 
     //compile code  g++ -std=c++0x rr.cpp 
+    if(fileName.substring(fileName.indexOf('.'))=="cpp"){
 
+        axios('URL',{
+            fileName: "" 
+            //data code has to be sent 
+        })
+        
+        //exec("g++  -std=c++0x "+fileName);
+
+    }
+    
     // docker compose maybe
+
+    
 
     return result;
 } 
