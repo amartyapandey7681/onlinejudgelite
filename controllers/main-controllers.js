@@ -146,8 +146,9 @@ exports.submitSolution = async (req,res) => {
     // make for cpp first
 
     let fileName = 'submission_'+question_id+'_'+user_id+'.'+sub_lang;
-
-    fs.appendFile(fileName, "",function (err) {
+    console.log(__dirname);
+    let path1 = __dirname+"/../codeFiles/";
+    fs.appendFile(path1,fileName, "",function (err) {
         if (err) throw err;
         console.log('Saved!');
       });
@@ -179,7 +180,7 @@ exports.submitSolution = async (req,res) => {
 
     //now compile file in docker container
 
-  //  let finalResult = this.containerizeCodeCompilation(fileName);
+    let finalResult = this.CodeCompilation(fileName);
 
      // make entries in respective collections >>async<<
     //
@@ -189,22 +190,22 @@ exports.submitSolution = async (req,res) => {
 
 }
 
-exports.containerizeCodeCompilation = async(fileName)=>{
+exports.CodeCompilation = async(fileName)=>{
 
     let result;
 
+
+
     //compile code  g++ -std=c++0x rr.cpp 
-    if(fileName.substring(fileName.indexOf('.'))=="cpp"){
+    // if(fileName.substring(fileName.indexOf('.'))=="cpp"){
 
-        axios('URL',{
-            fileName: "" 
-            //data code has to be sent 
-        })
+    //     axios('URL',{
+    //         fileName: "" 
+    //         //data code has to be sent 
+    //     })
         
-        //exec("g++  -std=c++0x "+fileName);
+        exec("g++  -std=c++0x "+fileName);
 
-    }
-    
     // docker compose maybe
 
     
