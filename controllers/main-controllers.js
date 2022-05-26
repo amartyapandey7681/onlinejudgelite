@@ -204,7 +204,7 @@ exports.CodeCompilation = async(fileName)=>{
     //         //data code has to be sent 
     //     })
         
-        exec("g++  -std=c++0x "+fileName);
+     //   exec("g++  -std=c++0x "+fileName);
 
     // docker compose maybe
 
