@@ -5,8 +5,8 @@ const submission = new Schema({
     _id                 :{ type: String },
     question_id         : String,
     User_Id             : String,
-    Accepted            : Boolean
-
+    Accepted            : Boolean,
+    timesSubmitted      : {type :Number,default:0}
 }, {
     timestamps: {
         createdAt: "_created_at",

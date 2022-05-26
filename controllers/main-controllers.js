@@ -1,5 +1,5 @@
 const questionM = require("../models/questions");
-const submission = require("../models/submissions");
+const submissionQ = require("../models/submissions");
 const users = require("../models/users");
 const exec  = require("child_process").exec;
 const axios = require("axios");
@@ -142,16 +142,37 @@ exports.submitSolution = async (req,res) => {
 
     let sub_code = submission.code;
 
+    let dataSub;
+    console.log("1212");
+    try{
+       // dataSub = await submissionQ.findMany({question_id:question_id,User_Id:user_id },{_id:1,timesSubmitted:1})
+       dataSub = await submissionQ.aggregate([{
+           $match:{
+               $and:[
+            {question_id:question_id},
+            {User_Id:user_id }]
+           }
+       },{
+           $project:{_id:1,
+           timesSubmitted:1
+       }}])
+    }catch(err){
+        return res.status(500).send({err:err});
+    }
+    console.log(dataSub)
+    let times = dataSub[0].timesSubmitted;
+
+    
     // now parse the code string to file and the execute 
     // make for cpp first
 
-    let fileName = 'submission_'+question_id+'_'+user_id+'.'+sub_lang;
-    console.log(__dirname);
-  //  let path1 = __dirname+"/../codeFiles/";
-    fs.appendFile(fileName, "",function (err) {
-        if (err) throw err;
-        console.log('Saved!');
-      });
+    let fileName = 'submission_'+question_id+'_'+user_id+_+times+'.'+sub_lang;
+//     console.log(__dirname);
+//   //  let path1 = __dirname+"/../codeFiles/";
+//     fs.appendFile("./../codeFiles/"+fileName, "",function (err) {
+//         if (err) throw err;
+//         console.log('Saved!');
+//       });
 
     try {  
         let codeConversion = sub_code+"\n";
@@ -184,6 +205,17 @@ exports.submitSolution = async (req,res) => {
 
      // make entries in respective collections >>async<<
     //
+    times++;
+    try{
+      await submission.updateMany({question_id:question_id,User_Id:user_id },{
+        timesSubmitted:times
+      },{
+          strict:false
+      })
+    }catch(err){
+        return res.status(500).send({err:err});
+    }
+
     return res.status(200).send({
         fileName:fileName
     })
