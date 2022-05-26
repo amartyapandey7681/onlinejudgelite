@@ -147,8 +147,8 @@ exports.submitSolution = async (req,res) => {
 
     let fileName = 'submission_'+question_id+'_'+user_id+'.'+sub_lang;
     console.log(__dirname);
-    let path1 = __dirname+"/../codeFiles/";
-    fs.appendFile(path1,fileName, "",function (err) {
+  //  let path1 = __dirname+"/../codeFiles/";
+    fs.appendFile(fileName, "",function (err) {
         if (err) throw err;
         console.log('Saved!');
       });
