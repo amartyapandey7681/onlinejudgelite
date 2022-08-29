@@ -173,6 +173,18 @@ exports.containerizeCodeCompilation = async(fileName)=>{
 
     // compile without docker first
 
+
+    var spawn = require('child_process').spawn;
+    var child = spawn('./a.out');
+
+    child.stdin.end('12 25');
+
+    child.stdout.on('data', (data) => {
+            console.log(data.toString())
+    });
+
+    child.on('close', (code) => console.log('Exit code: ' + code));
+
     
 
 
