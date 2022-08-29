@@ -125,7 +125,7 @@ exports.submitSolution = async (req,res) => {
 
     let fileName = 'submission_'+question_id+'_'+user_id+'.'+sub_lang;
 
-    fs.appendFile(fileName, '//Hello content!', function (err) {
+    fs.appendFile(fileName, ' ', function (err) {
         if (err) throw err;
         console.log('Saved!');
       });
@@ -161,6 +161,8 @@ exports.submitSolution = async (req,res) => {
 
      // make entries in respective collections >>async<<
 
+    return res.status(200).send({"data":"file created"});
+
 
 
 }
@@ -170,6 +172,8 @@ exports.containerizeCodeCompilation = async(fileName)=>{
     let result;
 
     // compile without docker first
+
+    
 
 
     return result;
