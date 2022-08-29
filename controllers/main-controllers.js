@@ -33,8 +33,8 @@ exports.addQuestion = async (req,res) => {
     let params = req.body;
 
     let Question_paragraph = params.Question_paragraph ;
-    let Test_case_input    = params.Question_paragraph ;
-    let Correct_output     = params.Question_paragraph ;
+    let Test_case_input    = params.Test_case_input ;
+    let Correct_output     = params.Correct_output ;
     let Points_for_correct = params.Points_for_correct ;
 
     let obj = {

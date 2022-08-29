@@ -4,7 +4,7 @@
   "description": "online-judge",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "node index.js"
   },
   "author": "Amarty  Pandey",
   "license": "AGPL-3.0 License",
