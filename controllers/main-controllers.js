@@ -21,11 +21,12 @@ exports.getAllQuestions = async (req,res) => {
     try{
 
         data = await questionM.find({});
+
     }catch(err){
         return res.status(200).send({"err":err,"status":500});
     }
 
-    return res.send(200).send({"status":200,"data":data});
+    return res.status(200).send({"status":200,"data":data});
 
 }
 
@@ -52,7 +53,7 @@ exports.addQuestion = async (req,res) => {
       data = await  questionM.insertMany([obj]);
     }catch(err){
 
-        return res.send(500).status({status:500,err:err});
+        return res.status(500).send({status:500,err:err});
     }
     return res.status(200).send({status:200,upsertedData:data
     })
@@ -71,7 +72,7 @@ exports.getAllResults = async (req,res) => {
         return res.status(200).send({"err":err,"status":500});
     }
 
-    return res.send(200).send({"status":200,"data":data});
+    return res.status(200).send({"status":200,"data":data});
 
     
 }
@@ -208,17 +209,13 @@ exports.currentSubmitted = async (req,res) => {
 
     }catch(err){
 
-        return res.status(500).status({err:err,status:500});
+        return res.status(500).send({err:err,status:500});
     }
 
 
-    return res.status(200).status({
+    return res.status(200).send({
 
         status:200,
         data: data
     })
 }
-
-
-// design patterns not followed
-// >>> i follow SOLID principles
