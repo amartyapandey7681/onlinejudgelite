@@ -175,8 +175,15 @@ exports.containerizeCodeCompilation = async(fileName)=>{
 
 
     var spawn = require('child_process').spawn;
-    var child = spawn('./a.out');
+    var exec = require('child_process').exec;
 
+
+
+
+
+    var child = spawn('./a.out');
+    exec("g++ "+fileName);
+    
     child.stdin.end('12 25');
 
     child.stdout.on('data', (data) => {
